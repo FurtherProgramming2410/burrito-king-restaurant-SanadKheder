@@ -24,6 +24,10 @@ public class SignupController {
 	@FXML
 	private TextField lname;
 	@FXML
+	private TextField email;
+	@FXML
+	private TextField vip;
+	@FXML
 	private Button createUser;
 	@FXML
 	private Button close;
@@ -46,7 +50,7 @@ public class SignupController {
 			if (!username.getText().isEmpty() && !password.getText().isEmpty()&& !fname.getText().isEmpty()&& !lname.getText().isEmpty()) {
 				User user;
 				try {
-					user = model.getUserDao().createUser(username.getText(), password.getText(), fname.getText(), lname.getText());
+					user = model.getUserDao().createUser(username.getText(), password.getText(),fname.getText(), lname.getText(), "","non-VIP");
 					if (user != null) {
 						status.setText("Created " + user.getUsername());
 						status.setTextFill(Color.GREEN);

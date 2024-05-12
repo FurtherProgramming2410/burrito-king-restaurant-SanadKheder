@@ -5,6 +5,8 @@ public class User {
 	private String password;
 	private String fname;
 	private String lname;
+	private String email;
+	private String vip="false";
 	public User() {
 	}
 	
@@ -12,13 +14,58 @@ public class User {
 	
 
 
-	public User(String username, String password, String fname, String lname) {
+
+	public User(String username, String password, String fname, String lname, String email, String vip) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.fname = fname;
 		this.lname = lname;
+		this.email = email;
+		this.vip = vip;
 	}
+
+
+
+
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+
+
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+
+
+
+
+
+
+	public String getVip() {
+		return vip;
+	}
+
+
+
+
+
+
+	public void setVip(String vip) {
+		this.vip = vip;
+	}
+
+
+
+
 
 
 	public String getFname() {

@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -46,10 +47,11 @@ public class LoginController {
 	@FXML
 	public void initialize() {		
 		login.setOnAction(event -> {
+		
 			if (!name.getText().isEmpty() && !password.getText().isEmpty()) {
 				User user;
 				try {
-					user = model.getUserDao().getUser(name.getText(), password.getText(), null, null);
+					user = model.getUserDao().getUser(name.getText(), password.getText(), null, null, null, null);
 					if (user != null) {
 						model.setCurrentUser(user);
 						try {
@@ -57,7 +59,7 @@ public class LoginController {
 							HomeController homeController = new HomeController(stage, model);
 							
 							loader.setController(homeController);
-							VBox root = loader.load();
+							HBox root = loader.load();
 	
 							homeController.showStage(root);
 							stage.close();
@@ -81,6 +83,7 @@ public class LoginController {
 	
 			name.clear();
 			password.clear();
+			
 			
 		});
 		

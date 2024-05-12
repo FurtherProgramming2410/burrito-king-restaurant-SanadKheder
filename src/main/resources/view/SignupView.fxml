@@ -8,8 +8,12 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="374.0" prefWidth="446.0" spacing="10.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" fillWidth="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="700.0" spacing="2.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <Label layoutX="85.0" layoutY="56.0" prefHeight="17.0" prefWidth="250.0" text="First Name" />
+      <TextField fx:id="fname" layoutX="85.0" layoutY="97.0" maxWidth="250.0" />
+      <Label layoutX="85.0" layoutY="24.0" prefHeight="17.0" prefWidth="250.0" text="Last Name" />
+      <TextField fx:id="lname" layoutX="85.0" layoutY="52.0" maxWidth="250.0" />
       <Label prefHeight="17.0" prefWidth="250.0" text="Username" />
       <TextField fx:id="username" maxWidth="250.0">
          <VBox.margin>
@@ -21,10 +25,6 @@
             <Insets bottom="10.0" />
          </VBox.margin>
       </PasswordField>
-      <Label layoutX="85.0" layoutY="56.0" prefHeight="17.0" prefWidth="250.0" text="First Name" />
-      <TextField fx:id="fname" layoutX="85.0" layoutY="97.0" maxWidth="250.0" style="-fx-background-color: blue;" />
-      <Label layoutX="85.0" layoutY="24.0" prefHeight="17.0" prefWidth="250.0" text="Last Name" />
-      <TextField fx:id="lname" layoutX="85.0" layoutY="52.0" maxWidth="250.0" />
       <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="20.0">
          <children>
             <Button fx:id="createUser" mnemonicParsing="false" text="Create user" />

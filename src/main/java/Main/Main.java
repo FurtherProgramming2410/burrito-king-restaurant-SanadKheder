@@ -22,6 +22,8 @@ public class Main extends Application {
 		model = new Model();
 	}
 
+	
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
