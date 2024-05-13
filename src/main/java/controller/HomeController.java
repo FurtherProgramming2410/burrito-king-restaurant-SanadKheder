@@ -10,12 +10,15 @@ import dao.Database;
 import dao.UserDaoImpl;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -38,7 +41,14 @@ public class HomeController {
 	@FXML
 	private Button apply;
 	@FXML
+	private Button home;
+	@FXML
+	private Button account;
+	@FXML
 	private TextField email;
+	
+	@FXML
+	private Pane pane1;
 
 	@FXML
 	private Button updateUser; // Corresponds to the Menu item "viewProfile" in HomeView.fxml
@@ -55,6 +65,7 @@ public class HomeController {
 
 	@FXML
 	public void initialize() {
+		checkVip.setVisible(false);
 		welcome.setText("Welcome " + model.getCurrentUser().getFname() + " " + model.getCurrentUser().getLname() +" "+model.getCurrentUser().getVip()) ;
 		
 		if (model.getCurrentUser().getVip().equals("non-VIP")) {
@@ -78,13 +89,22 @@ public class HomeController {
 			});
 		}
 
-		updateUser.setOnAction(event -> {
+		
+		
+	      
+		
+	
+		
+		
+		account.setOnAction(event -> {
+	
 			try {
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UpdateUserView.fxml"));
 				// Customize controller instance
 				UpdateUserController updateUserController = new UpdateUserController(stage, model);
 				loader.setController(updateUserController);
 				VBox root;
+				
 				root = loader.load();
 				updateUserController.showStage(root);
 				welcome.setText(

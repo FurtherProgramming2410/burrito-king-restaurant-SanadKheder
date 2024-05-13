@@ -28,20 +28,33 @@ public class UpdateUserController {
 	
 	@FXML
 	private Label message;
-
+	@FXML
+	private Button edit;
+	
+	@FXML
+private TextField fname1;
+	@FXML
+	private TextField lname1;
 	@FXML
 	private TextField username;
-
+	@FXML
+private TextField email;
+	@FXML
+	private TextField vip;
 	@FXML
 	private TextField password;
+
+	
+	
+	
 	@FXML
-	private TextField fname;
+	private Label fname;
 	@FXML
-	private TextField lname;
+	private Label lname;
 	@FXML
 	private Button close;
 	@FXML
-	private Button updateUser;
+	private Button save;
 
 	private Stage stage;
 	private Stage parentStage;
@@ -59,43 +72,54 @@ public class UpdateUserController {
 		
 		fname.setText(model.getCurrentUser().getFname());
 		lname.setText(model.getCurrentUser().getLname());
+		fname1.setText(model.getCurrentUser().getFname());
+		lname1.setText(model.getCurrentUser().getLname());
 		username.setText(model.getCurrentUser().getUsername());
 		password.setText(model.getCurrentUser().getPassword());
+		email.setText(model.getCurrentUser().getEmail());
+		vip.setText(model.getCurrentUser().getVip());
 		
-		updateUser.setOnAction(event -> {
-			
-			if (!fname.getText().isEmpty() && !password.getText().isEmpty()&& !lname.getText().isEmpty()) {
-			
-				
-				
+		
+		
+		
+		
+		save.setOnAction(event -> {
+			if (!fname1.getText().isEmpty() && !password.getText().isEmpty()&& !lname1.getText().isEmpty()) {
 			try (Connection connection = Database.getConnection();
 					Statement stmt = connection.createStatement();) {
 				String sql = "UPDATE users " +
-			            "SET fname = '"+fname.getText()+"'"
-			            		+ " ,lname = '"+lname.getText()+"' ,"
+			            "SET fname = '"+fname1.getText()+"'"
+			            		+ " ,lname = '"+lname1.getText()+"' ,"
 			            		+ " password = '"+password.getText()+"'"
 			            + "WHERE username  = '"+model.getCurrentUser().getUsername()+"'";
 				stmt.executeUpdate(sql);
-			
-				
-				model.getCurrentUser().setFname(fname.getText());
-				model.getCurrentUser().setLname(lname.getText());
+             	model.getCurrentUser().setFname(fname1.getText());
+				model.getCurrentUser().setLname(lname1.getText());
 				model.getCurrentUser().setPassword(password.getText());
-				
-
-				
+				fname1.setDisable(true);
+				lname1.setDisable(true);
+				password.setDisable(true);
+				save.setVisible(false);
+				edit.setVisible(true);
 		} catch (SQLException e) {
-	         e.printStackTrace();
-	      }
-			
-			}
+	         e.printStackTrace(); }}
 			 else {
-				 message.setText("Empty Firstname or LastName or password");
-				
-				}
-			
-			
+				 message.setText("Empty Firstname or LastName or password");			
+				}	
 		});	
+		
+		
+		
+		
+		edit.setOnAction(event -> {
+		edit.setVisible(false);
+		fname1.setDisable(false);
+		lname1.setDisable(false);
+		password.setDisable(false);
+		save.setVisible(true);
+		});	
+		
+		
 		
 		
 		
@@ -106,7 +130,13 @@ public class UpdateUserController {
 		
 		
 	}
+	
+	
+	
 
+	
+	
+	
 	public void showStage(Pane root) {
 		Scene scene = new Scene(root, 500, 300);
 		stage.setScene(scene);
