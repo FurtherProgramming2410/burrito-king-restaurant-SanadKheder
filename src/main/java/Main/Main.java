@@ -13,6 +13,7 @@ import javafx.scene.layout.GridPane;
 import javafx.fxml.FXMLLoader;
 
 import model.Model;
+import p.Restaurant;
 
 public class Main extends Application {
 	private Model model;
@@ -22,6 +23,8 @@ public class Main extends Application {
 		model = new Model();
 	}
 
+	
+	
 	
 	
 	@Override
@@ -47,6 +50,7 @@ public class Main extends Application {
 	}
 
 	public static void main(String[] args) {
+		
 		launch(args);
 	}
 }

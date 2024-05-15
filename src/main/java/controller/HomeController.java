@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import dao.Database;
 import dao.UserDaoImpl;
@@ -25,6 +26,10 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.Model;
 import model.User;
+import p.Burrito;
+import p.Fries;
+import p.Order;
+import p.Sodas;
 
 public class HomeController {
 	@FXML
@@ -43,6 +48,8 @@ public class HomeController {
 	@FXML
 	private Button home;
 	@FXML
+	private Button menu;
+	@FXML
 	private Button account;
 	@FXML
 	private TextField email;
@@ -52,13 +59,26 @@ public class HomeController {
 
 	@FXML
 	private Button updateUser; // Corresponds to the Menu item "viewProfile" in HomeView.fxml
+	private int friQty ,sodasQty,burrQty,time;
+	private	double total;	
+	private ArrayList<Order> order ;
 
+	Burrito item1 = new Burrito("Burrito",7.00);
+    Fries  item2 = new Fries(9,"Fries",4.00);
+	Sodas  item3 = new Sodas(5,"Sodas",2.50);
+	
+	
+	
+	
+	
 	public HomeController(Stage parentStage, Model model) {
 		this.stage = new Stage();
 		this.parentStage = parentStage;
 		this.model = model;
+		order = new ArrayList<Order>(); 
 
 	}
+	
 	
 	
 	
@@ -115,6 +135,28 @@ public class HomeController {
 				e.printStackTrace();
 			}
 		});
+		
+		
+		menu.setOnAction(event -> {
+			
+			try {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Menu.fxml"));
+				// Customize controller instance
+				MenuController menuController = new MenuController(stage, model);
+				loader.setController(menuController);
+				VBox root;
+				
+				root = loader.load();
+				menuController.showStage(root);
+				welcome.setText(
+						"Welcome " + model.getCurrentUser().getFname() + " " + model.getCurrentUser().getLname());
+				stage.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
+
 
 	}
 

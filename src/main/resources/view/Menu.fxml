@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="301.0" prefWidth="501.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="70.0" prefWidth="501.0">
+         <children>
+            <Pane prefHeight="86.0" prefWidth="501.0" style="-fx-background-color: orange;">
+               <children>
+                  <Label layoutX="40.0" layoutY="5.0" text="Menu" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </VBox>
+      <Pane prefHeight="222.0" prefWidth="501.0">
+         <children>
+            <ImageView fitHeight="70.0" fitWidth="89.0" layoutX="18.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/fries.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="67.0" fitWidth="89.0" layoutX="122.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/burrito.jpeg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="67.0" fitWidth="89.0" layoutX="225.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/sodas.jpg" />
+               </image>
+            </ImageView>
+            <Label layoutX="18.0" layoutY="7.0" text="Fries" textFill="#ffa100">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="122.0" layoutY="4.0" text="Burrito" textFill="#ffa100">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="225.0" layoutY="4.0" prefHeight="21.0" prefWidth="42.0" text="Sodas" textFill="#ffa100">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="18.0" layoutY="73.0" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: Orange;" text="\$29" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="122.0" layoutY="73.0" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: Orange;" text="\$29" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="225.0" layoutY="73.0" prefHeight="21.0" prefWidth="33.0" style="-fx-background-color: Orange;" text="\$29" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="93.0" text="Available: " textFill="#ffa100">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="122.0" layoutY="93.0" text="Available: " textFill="#ffa100">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="221.0" layoutY="93.0" text="Available: " textFill="#ffa100">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="friesavailable" layoutX="87.0" layoutY="93.0" text="0" textFill="#ffaa00">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="burritoavailable" layoutX="196.0" layoutY="93.0" text="0" textFill="#ffaa00">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="sodasavailable" layoutX="294.0" layoutY="93.0" text="0" textFill="#ffaa00">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Button fx:id="friesadd" layoutX="22.0" layoutY="147.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="82.0" style="-fx-background-color: orange;" text="Add" textFill="WHITE" />
+            <Button fx:id="burritoadd" layoutX="135.0" layoutY="147.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" style="-fx-background-color: orange;" text="Add" textFill="WHITE" />
+            <Button fx:id="sodasadd" layoutX="229.0" layoutY="147.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="82.0" style="-fx-background-color: orange;" text="Add" textFill="WHITE" />
+            <HBox layoutX="348.0" layoutY="13.0" prefHeight="182.0" prefWidth="146.0" style="-fx-background-color: orange;">
+               <children>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="8.0" layoutY="21.0" text="Fries" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="12.0" layoutY="70.0" text="Sodas" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="8.0" layoutY="42.0" text="Burrito" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="57.0" text="Order" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="addToOrder" layoutX="42.0" layoutY="143.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Add To Order" textFill="#ff9900">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
+                        <Label fx:id="fries" layoutX="69.0" layoutY="21.0" text="0" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="burrito" layoutX="68.0" layoutY="42.0" text="0" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="sodas" layoutX="68.0" layoutY="70.0" text="0" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="removefries" layoutX="85.0" layoutY="20.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="60.0" style="-fx-background-color: orange;" text="Remove" textFill="WHITE">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="removeburrito" layoutX="85.0" layoutY="41.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="60.0" style="-fx-background-color: orange;" text="Remove" textFill="WHITE">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="removesodas" layoutX="85.0" layoutY="69.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="60.0" style="-fx-background-color: orange;" text="Remove" textFill="WHITE">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+            <TextField fx:id="friesorder" layoutX="46.0" layoutY="115.0" prefHeight="25.0" prefWidth="33.0" promptText="1" text="1" />
+            <TextField fx:id="burritoorder" editable="false" layoutX="150.0" layoutY="115.0" prefHeight="25.0" prefWidth="33.0" promptText="1" text="1" />
+            <TextField fx:id="sodasorder" editable="false" layoutX="254.0" layoutY="115.0" prefHeight="25.0" prefWidth="33.0" promptText="1" text="1" />
+            <Button fx:id="MF" layoutX="23.0" layoutY="114.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="21.0" style="-fx-background-color: orange;" text="-" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="13.0" />
+               </font></Button>
+            <Button fx:id="PF" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="1.0" layoutX="77.0" layoutY="114.0" minHeight="13.0" minWidth="21.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="28.0" prefWidth="21.0" style="-fx-background-color: orange;" text="+" textAlignment="RIGHT" textFill="#fffcfc" textOverrun="CLIP" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="MB" layoutX="129.0" layoutY="115.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="21.0" style="-fx-background-color: orange;" text="-" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="PB" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="1.0" layoutX="183.0" layoutY="114.0" minHeight="13.0" minWidth="21.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="28.0" prefWidth="21.0" style="-fx-background-color: orange;" text="+" textAlignment="RIGHT" textFill="#fffcfc" textOverrun="CLIP" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="MS" layoutX="230.0" layoutY="116.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="21.0" style="-fx-background-color: orange;" text="-" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="PS" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="1.0" layoutX="284.0" layoutY="115.0" minHeight="13.0" minWidth="21.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="28.0" prefWidth="21.0" style="-fx-background-color: orange;" text="+" textAlignment="RIGHT" textFill="#fffcfc" textOverrun="CLIP" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <VBox layoutX="10.0" layoutY="10.0" prefHeight="70.0" prefWidth="501.0">
+         <children>
+            <Pane prefHeight="28.0" prefWidth="501.0">
+               <children>
+                  <Button fx:id="close" layoutX="422.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: orange;" text="Close" textFill="WHITE" />
+               </children>
+            </Pane>
+         </children>
+      </VBox>
+   </children>
+</VBox>
