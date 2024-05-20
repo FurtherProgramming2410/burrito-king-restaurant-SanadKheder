@@ -1,5 +1,4 @@
 package controller;
-
 import java.awt.Panel;
 import java.io.IOException;
 import java.sql.Connection;
@@ -29,65 +28,32 @@ import model.User;
 import p.Burrito;
 import p.Fries;
 import p.Order;
+import p.Restaurant;
 import p.Sodas;
 
 public class HomeController {
 	@FXML
-	private Label welcome;
+	private Pane checkVip, pane1;
 	@FXML
-	private Pane checkVip;
-	@FXML
-	private Label message1;
-	@FXML
-	private Label message;
+	private Label message1, welcome, message;
 	private Model model;
-	private Stage stage;
-	private Stage parentStage;
+	private Stage stage, parentStage;
 	@FXML
-	private Button apply;
-	@FXML
-	private Button home;
-	@FXML
-	private Button menu;
-	@FXML
-	private Button account;
+	private Button home, apply, menu, account, updateUser;
 	@FXML
 	private TextField email;
-	
-	@FXML
-	private Pane pane1;
-
-	@FXML
-	private Button updateUser; // Corresponds to the Menu item "viewProfile" in HomeView.fxml
-	private int friQty ,sodasQty,burrQty,time;
-	private	double total;	
-	private ArrayList<Order> order ;
-
-	Burrito item1 = new Burrito("Burrito",7.00);
-    Fries  item2 = new Fries(9,"Fries",4.00);
-	Sodas  item3 = new Sodas(5,"Sodas",2.50);
-	
-	
-	
-	
-	
 	public HomeController(Stage parentStage, Model model) {
 		this.stage = new Stage();
 		this.parentStage = parentStage;
 		this.model = model;
-		order = new ArrayList<Order>(); 
-
 	}
-	
-	
-	
-	
 
 	@FXML
 	public void initialize() {
-		checkVip.setVisible(false);
-		welcome.setText("Welcome " + model.getCurrentUser().getFname() + " " + model.getCurrentUser().getLname() +" "+model.getCurrentUser().getVip()) ;
 		
+		checkVip.setVisible(false);
+		welcome.setText("Welcome " + model.getCurrentUser().getFname() + " " + model.getCurrentUser().getLname() + " "
+				+ model.getCurrentUser().getVip());
 		if (model.getCurrentUser().getVip().equals("non-VIP")) {
 			checkVip.setVisible(true);
 			apply.setOnAction(event -> {
@@ -105,69 +71,43 @@ public class HomeController {
 				} else {
 					message.setText("Please Enter Your Email");
 					message.setTextFill(Color.RED);
-				}
-			});
-		}
+				}});	}
 
-		
-		
-	      
-		
-	
-		
-		
 		account.setOnAction(event -> {
-	
+			MenuController.restaurant.Report();
 			try {
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UpdateUserView.fxml"));
 				// Customize controller instance
 				UpdateUserController updateUserController = new UpdateUserController(stage, model);
 				loader.setController(updateUserController);
-				VBox root;
-				
-				root = loader.load();
+				 VBox root = loader.load();
 				updateUserController.showStage(root);
 				welcome.setText(
 						"Welcome " + model.getCurrentUser().getFname() + " " + model.getCurrentUser().getLname());
 				stage.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
-		});
-		
-		
+			}	});
+
 		menu.setOnAction(event -> {
-			
 			try {
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Menu.fxml"));
 				// Customize controller instance
 				MenuController menuController = new MenuController(stage, model);
 				loader.setController(menuController);
-				VBox root;
 				
-				root = loader.load();
+				VBox root = loader.load();
 				menuController.showStage(root);
 				welcome.setText(
 						"Welcome " + model.getCurrentUser().getFname() + " " + model.getCurrentUser().getLname());
 				stage.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		});
-
-
+				e.printStackTrace();}});
 	}
-
 	public void showStage(Pane root) {
-
 		Scene scene = new Scene(root, 500, 300);
 		stage.setScene(scene);
 		stage.setResizable(false);
 		stage.setTitle("Home");
-
-		stage.show();
-	}
-
-}
+		stage.show();}}
