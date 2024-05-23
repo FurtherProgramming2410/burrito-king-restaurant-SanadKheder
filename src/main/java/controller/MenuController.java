@@ -34,24 +34,21 @@ public class MenuController {
 
 	
 	
+	
+	
 	@FXML
 	private Button close,removefries,removeburrito,sodasadd,burritoadd,friesadd,addToOrder,removesodas;
 	@FXML
 	private TextField burritoorder,sodasorder,friesorder,cardnumber,cardname,mm,yy,cvv;
 	@FXML
-	private Label burrito,fries,sodas,SodasPrice,BurritoPrice,FriesPrice,message,totalprice;
+	private Label burrito,fries,sodas,SodasPrice,BurritoPrice,FriesPrice,message,totalprice,Time;
 	@FXML
 	private Button MF,PF,PS,MS,PB,MB,pay,addMore;
 	@FXML
 	private Pane cardPage,orderPage,burritocheckout,sodascheckout,friescheckout;
-
-	
-	
-	
 	private Stage stage,parentStage;
 	private Model model;
-
-	private int qtyf,qtyS,qtyB=1;
+	private int qtyf,qtyS,qtyB=0;
 	
 	public MenuController(Stage parentStage, Model model) {
 		this.stage = new Stage();
@@ -63,12 +60,10 @@ public class MenuController {
 	
 	@FXML
 	public void initialize() {
-
-	
+		
 		
 		
 		PF.setOnAction(event -> {	
-
 			qtyf = qtyf+1;
 			friesorder.setText(Integer.toString(qtyf));
 		});
@@ -82,7 +77,6 @@ public class MenuController {
 	
 		
 		PS.setOnAction(event -> {	
-
 			qtyS = qtyS+1;
 			sodasorder.setText(Integer.toString(qtyS));
 		});
@@ -95,7 +89,6 @@ public class MenuController {
 	/////////////////////////////////////
 		PB.setOnAction(event -> {	
 			qtyB = qtyB+1;
-
 			burritoorder.setText(Integer.toString(qtyB));
 		});
 		MB.setOnAction(event -> {	
@@ -110,36 +103,33 @@ public class MenuController {
 		sodasadd.setOnAction(event -> {
 			updateTotal();
 			if (qtyS>0) {
-			
-				
 			sodascheckout.setVisible(true);}
-			
 			sodas.setText(sodasorder.getText());
 			});
+		
 		burritoadd.setOnAction(event -> {	
 			updateTotal();
 			if (qtyB>0) {
-				
 			burritocheckout.setVisible(true);}
 			burrito.setText(burritoorder.getText());	
 			});
+		
 		friesadd.setOnAction(event -> {
 			updateTotal();
 			if (qtyf>0) {
-				
 			friescheckout.setVisible(true);}
 			fries.setText(friesorder.getText());
 			});
 		
 		
-			addToOrder.setOnAction(event -> {		
+			addToOrder.setOnAction(event -> {	
+                Time.setText(restaurant.addTime(qtyB,qtyf)+" Minutes");
 				cardPage.setVisible(true);
 				addMore.setVisible(true);
 				addToOrder.setVisible(false);
 				removeburrito.setVisible(false);
 				removesodas.setVisible(false);
 				removefries.setVisible(false);
-
 		});
 			
 			addMore.setOnAction(event -> {		
@@ -148,47 +138,40 @@ public class MenuController {
 				addToOrder.setVisible(true);
 				removeburrito.setVisible(true);
 				removesodas.setVisible(true);
-				removefries.setVisible(true);
-
-				
+				removefries.setVisible(true);	
 		});
 			pay.setOnAction(event -> {		
-		
 				if (!cardnumber.getText().isEmpty() && !cardname.getText().isEmpty()&& !mm.getText().isEmpty()
 						&& !yy.getText().isEmpty()&& !cvv.getText().isEmpty()&&cardnumber.getLength() == 16 &&cvv.getLength() == 3
 						) {
-						restaurant.addfries(qtyf);
-						restaurant.addsodas(qtyS);
-						restaurant.addburritons(qtyB);
-						restaurant.CheckOut(qtyf,qtyS,qtyB);
+						restaurant.CheckOut(qtyf,qtyS,qtyB,model.getCurrentUser().getUsername());
 						restaurant.Report();
+						
 						stage.close();
 						parentStage.show();
-					
-	
-				
 				}
 				else {
 					message.setText("Please Fill all boxes");
-
-				}
-		});
+				}});
 		
 			
 			
 			
-		
+			
+			
+		//////////////
 		removefries.setOnAction(event -> {
 				fries.setText("0");	friesorder.setText("0"); updateTotal();
 		friescheckout.setVisible(false);	});
+		//////////////////////
 		removesodas.setOnAction(event -> {
 			 sodas.setText("0"); sodasorder.setText("0");	 updateTotal();
 		sodascheckout.setVisible(false);});
+		///////////////////////
 		removeburrito.setOnAction(event -> {
-
 		burrito.setText("0");burritoorder.setText("0"); updateTotal();
 		burritocheckout.setVisible(false);});
-		
+		//////
 		
 		
 		close.setOnAction(event -> {

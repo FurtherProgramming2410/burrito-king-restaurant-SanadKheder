@@ -9,6 +9,17 @@ public class Model {
 	private UserDao userDao;
 	private User currentUser; 
 	
+
+	public UserDao getOrderDao() {
+		return orderDao;
+	}
+
+	public void setOrderDao(UserDao orderDao) {
+		this.orderDao = orderDao;
+	}
+
+	private UserDao orderDao;
+	
 	public Model() {
 		userDao = new UserDaoImpl();
 	}

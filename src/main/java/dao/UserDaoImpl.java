@@ -10,7 +10,6 @@ import model.User;
 
 public class UserDaoImpl implements UserDao {
 	private final String TABLE_NAME = "users";
-
 	public UserDaoImpl() {
 	}
 
@@ -21,10 +20,17 @@ public class UserDaoImpl implements UserDao {
 			String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (username VARCHAR(10) NOT NULL,"
 					+ "password VARCHAR(8) NOT NULL," + "fname VARCHAR(10) NOT NULL,"+"lname VARCHAR(10) NOT NULL," +"email VARCHAR(10) NOT NULL," 
 					+"vip VARCHAR(10) NOT NULL," +"PRIMARY KEY (username))";
+			
+			String sql1 = "CREATE TABLE IF NOT EXISTS orders (date VARCHAR(8) NOT NULL," 
+			+"price VARCHAR(8) NOT NULL," +"status VARCHAR(8) NOT NULL," +"username VARCHAR(8) NOT NULL)";
+					
 			stmt.executeUpdate(sql);
+			stmt.executeUpdate(sql1);
 		} 
 	}
 
+	
+	
 	@Override
 	public User getUser(String username, String password,String fname ,String lname,String email,String vip ) throws SQLException {
 		String sql = "SELECT * FROM " + TABLE_NAME + " WHERE username = ? AND password = ? ";
@@ -49,6 +55,7 @@ public class UserDaoImpl implements UserDao {
 		}
 	}
 
+
 	@Override
 	public User createUser(String username, String password,String fname ,String lname,String email,String vip ) throws SQLException {
 		String sql = "INSERT INTO " + TABLE_NAME + " VALUES (?, ?, ?, ?,?,?)";
@@ -66,3 +73,4 @@ public class UserDaoImpl implements UserDao {
 		} 
 	}
 }
+	

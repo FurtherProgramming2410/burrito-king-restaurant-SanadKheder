@@ -179,6 +179,8 @@
                               <Label layoutX="76.0" layoutY="21.0" text="QTY" textFill="WHITE" />
                               <Label layoutX="5.0" layoutY="119.0" text="Total" textFill="WHITE" />
                               <Label fx:id="totalprice" layoutX="50.0" layoutY="119.0" text="\$0.00" textFill="WHITE" />
+                              <Label layoutX="5.0" layoutY="136.0" text="Time" textFill="WHITE" />
+                              <Label fx:id="Time" layoutX="61.0" layoutY="136.0" text="0" textFill="WHITE" />
                            </children>
                         </Pane>
                      </children>
