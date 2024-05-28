@@ -3,21 +3,14 @@ import java.time.LocalDateTime;
 
 public class Order  {
 	private LocalDateTime myObj = LocalDateTime.now();
-	private int orderId;
-	private String Report;
-	static int nextID=1;
+	
+	private int id;
 	private String username,date,price, status;
-	
-	
-	public Order(String date, String price, String status,String username ) {
-		super();
-		this.username = username;
-		this.date = date;
-		this.price = price;
-		this.status = status;
+	public int getId() {
+		return id;
 	}
-	public Order() {
-		
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getUsername() {
 		return username;
@@ -43,28 +36,16 @@ public class Order  {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public Order(String report) {
-		Report = report;
-		orderId= nextID++;
+	public Order(int id, String date, String price, String status, String username) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.date = date;
+		this.price = price;
+		this.status = status;
 	}
 	
-	public void setOrderId(int orderId) {
-		this.orderId = orderId;
-	}
-	public String getReport() {
-		return Report;
-	}
-	public void setReport(String report) {
-		Report = report;
-	}
-	public int getOrderId() {
-		return orderId;
-	}
-	@Override
-	public String toString() {
-		return "Order #" + orderId + "\n" + Report ;
-	}
-
+	
 	
 	
 }

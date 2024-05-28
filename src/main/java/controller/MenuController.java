@@ -31,21 +31,16 @@ import p.Sodas;
 public class MenuController {
 
 	static Restaurant restaurant = new Restaurant();
-
-	
-	
-	
-	
 	@FXML
-	private Button close,removefries,removeburrito,sodasadd,burritoadd,friesadd,addToOrder,removesodas;
+	private Button close,removefries,removeburrito,sodasadd,burritoadd,friesadd,addToOrder,removesodas,removemeal;
 	@FXML
 	private TextField burritoorder,sodasorder,friesorder,cardnumber,cardname,mm,yy,cvv;
 	@FXML
-	private Label burrito,fries,sodas,SodasPrice,BurritoPrice,FriesPrice,message,totalprice,Time;
+	private Label burrito,fries,sodas,SodasPrice,BurritoPrice,FriesPrice,message,totalprice,Time,mealqty;
 	@FXML
-	private Button MF,PF,PS,MS,PB,MB,pay,addMore;
+	private Button MF,PF,PS,MS,PB,MB,pay,addMore,addmeal;
 	@FXML
-	private Pane cardPage,orderPage,burritocheckout,sodascheckout,friescheckout;
+	private Pane cardPage,orderPage,burritocheckout,sodascheckout,friescheckout,mealcheckout,meal;
 	private Stage stage,parentStage;
 	private Model model;
 	private int qtyf,qtyS,qtyB=0;
@@ -61,7 +56,12 @@ public class MenuController {
 	@FXML
 	public void initialize() {
 		
-		
+		if(model.getCurrentUser().getVip().equals("VIP")) {
+			meal.setVisible(true);
+		}
+		else {
+			meal.setVisible(false);
+		}
 		
 		PF.setOnAction(event -> {	
 			qtyf = qtyf+1;
@@ -121,8 +121,20 @@ public class MenuController {
 			fries.setText(friesorder.getText());
 			});
 		
+		addmeal.setOnAction(event -> {
+			
+			mealqty.setText("1");
+			mealcheckout.setVisible(true);
+			updateTotal();
+			
+			
+			});
+		
 		
 			addToOrder.setOnAction(event -> {	
+				
+				qtyB=qtyB+Integer.parseInt(mealqty.getText());
+				qtyf=qtyf+Integer.parseInt(mealqty.getText());
                 Time.setText(restaurant.addTime(qtyB,qtyf)+" Minutes");
 				cardPage.setVisible(true);
 				addMore.setVisible(true);
@@ -145,8 +157,6 @@ public class MenuController {
 						&& !yy.getText().isEmpty()&& !cvv.getText().isEmpty()&&cardnumber.getLength() == 16 &&cvv.getLength() == 3
 						) {
 						restaurant.CheckOut(qtyf,qtyS,qtyB,model.getCurrentUser().getUsername());
-						restaurant.Report();
-						
 						stage.close();
 						parentStage.show();
 				}
@@ -172,6 +182,12 @@ public class MenuController {
 		burrito.setText("0");burritoorder.setText("0"); updateTotal();
 		burritocheckout.setVisible(false);});
 		//////
+		removemeal.setOnAction(event -> {
+			mealqty.setText("0");
+			qtyB=qtyB-1;
+			qtyf=qtyf-1;
+			updateTotal();
+			mealcheckout.setVisible(false);});
 		
 		
 		close.setOnAction(event -> {
@@ -182,7 +198,7 @@ public class MenuController {
 public void updateTotal() {
 	totalprice.setText("$"+Restaurant.CalculatorPriceFries(Double.parseDouble(friesorder.getText())
 			,Double.parseDouble(burritoorder.getText())
-			,Double.parseDouble(sodasorder.getText())));
+			,Double.parseDouble(sodasorder.getText()),Double.parseDouble(mealqty.getText())));
 	
 	
 }

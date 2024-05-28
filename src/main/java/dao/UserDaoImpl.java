@@ -21,8 +21,8 @@ public class UserDaoImpl implements UserDao {
 					+ "password VARCHAR(8) NOT NULL," + "fname VARCHAR(10) NOT NULL,"+"lname VARCHAR(10) NOT NULL," +"email VARCHAR(10) NOT NULL," 
 					+"vip VARCHAR(10) NOT NULL," +"PRIMARY KEY (username))";
 			
-			String sql1 = "CREATE TABLE IF NOT EXISTS orders (date VARCHAR(8) NOT NULL," 
-			+"price VARCHAR(8) NOT NULL," +"status VARCHAR(8) NOT NULL," +"username VARCHAR(8) NOT NULL)";
+			String sql1 = "CREATE TABLE IF NOT EXISTS orders (id	INTEGER NOT NULL,"+"date VARCHAR(8) NOT NULL," 
+			+"price VARCHAR(8) NOT NULL," +"status VARCHAR(8) NOT NULL," +"username VARCHAR(8) NOT NULL,"+" PRIMARY KEY (id AUTOINCREMENT))";
 					
 			stmt.executeUpdate(sql);
 			stmt.executeUpdate(sql1);

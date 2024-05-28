@@ -35,7 +35,7 @@ public class Database {
              ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
-                list.add(new Order(
+                list.add(new Order(Integer.parseInt(rs.getString("id")),
                         rs.getString("date"),
                         rs.getString("price"),
                         rs.getString("status"),

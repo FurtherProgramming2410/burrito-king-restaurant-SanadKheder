@@ -122,15 +122,40 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="table_order" editable="true" layoutX="4.0" layoutY="28.0" prefHeight="112.0" prefWidth="384.0">
+                  <TableView fx:id="table_order" editable="true" layoutX="4.0" layoutY="28.0" onMouseClicked="#getSelected" prefHeight="112.0" prefWidth="384.0">
                     <columns>
-                      <TableColumn fx:id="col_date" prefWidth="75.0" text="Date" />
-                      <TableColumn fx:id="col_price" prefWidth="48.0" text="Price" />
-                        <TableColumn fx:id="col_status" prefWidth="157.0" text="status" />
-                        <TableColumn fx:id="col_username" prefWidth="111.0" text="username" />
+                        <TableColumn fx:id="col_id" prefWidth="34.0" text="Id" />
+                      <TableColumn fx:id="col_date" prefWidth="63.0" text="Date" />
+                      <TableColumn fx:id="col_price" prefWidth="57.0" text="Price" />
+                        <TableColumn fx:id="col_status" minWidth="0.0" prefWidth="83.0" text="status" />
+                        <TableColumn fx:id="col_username" prefWidth="146.0" text="username" />
                     </columns>
                   </TableView>
                   <Button fx:id="Refresh" alignment="CENTER" contentDisplay="TOP" defaultButton="true" graphicTextGap="5000.0" layoutX="314.0" layoutY="-6.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: orange;" text="Refresh" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" wrapText="true">
+                     <effect>
+                        <DropShadow>
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="cancel" alignment="CENTER" contentDisplay="TOP" defaultButton="true" graphicTextGap="5000.0" layoutX="243.0" layoutY="-6.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: orange;" text="Cancel" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" wrapText="true">
+                     <effect>
+                        <DropShadow>
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="collect" alignment="CENTER" contentDisplay="TOP" defaultButton="true" graphicTextGap="5000.0" layoutX="172.0" layoutY="-6.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: orange;" text="Collect" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" wrapText="true">
                      <effect>
                         <DropShadow>
                            <color>

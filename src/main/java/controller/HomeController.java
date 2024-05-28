@@ -23,6 +23,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -43,7 +44,8 @@ public class HomeController {
 	private TableView<Order> table_order;
 	
 	
-	
+	@FXML
+	private TableColumn<Order,Integer> col_id;
 	@FXML
 	private TableColumn<Order,String> col_date;
 	@FXML
@@ -52,6 +54,7 @@ public class HomeController {
 	private TableColumn<Order,String> col_status;
 	@FXML
 	private TableColumn<Order,String> col_username;
+private int orderid;
 	
 	@FXML
 	ObservableList<Order> listM;
@@ -60,7 +63,7 @@ public class HomeController {
 	Connection conn=null;
 	ResultSet rs=null;
 	PreparedStatement pst =null;
-	
+	String select;
 	@FXML
 	private Pane checkVip, pane1;
 	@FXML
@@ -68,7 +71,7 @@ public class HomeController {
 	private Model model;
 	private Stage stage, parentStage;
 	@FXML
-	private Button Refresh, apply, menu, account, updateUser,logout;
+	private Button Refresh, apply, menu, account, updateUser,logout,cancel,collect;
 	@FXML
 	private TextField email;
 	public HomeController(Stage parentStage, Model model) {
@@ -80,6 +83,8 @@ public class HomeController {
 	
 	public void updateRecords() throws SQLException {
 		Database.setCurrentuser(model.getCurrentUser().getUsername());
+		
+		col_id.setCellValueFactory(new PropertyValueFactory<Order,Integer>("id"));
 		col_date.setCellValueFactory(new PropertyValueFactory<Order,String>("date"));
 		col_price.setCellValueFactory(new PropertyValueFactory<Order,String>("price"));
 		col_status.setCellValueFactory(new PropertyValueFactory<Order,String>("status"));
@@ -88,9 +93,68 @@ public class HomeController {
 		table_order.setItems(listM);
 	}
 	@FXML
-	public void initialize() throws SQLException {
+	void getSelected (MouseEvent event) {
+		index = table_order.getSelectionModel().getSelectedIndex();
+		if (index<=-1) {
+			return;
+		}
+		orderid=col_id.getCellData(index);
+		
+		 select =col_status.getCellData(index).toString();
+		
+		if (select.equals("Collected")) {
+			cancel.setVisible(false);
+			collect.setVisible(false);
+			
+			
+			
+		}
+		else if(select.equals("Await for collection")) {
+			cancel.setVisible(true);
+			collect.setVisible(true);
+			
+		}
+        else if(select.equals("Cancelled")) {
+			cancel.setVisible(false);
+			collect.setVisible(false);
+		}
+		
 
+		
+		
+	}
+	
+	
+	@FXML
+	public void initialize() throws SQLException {
 		updateRecords();
+		
+		cancel.setOnAction(event -> {
+			try (Connection connection = Database.getConnection();
+					Statement stmt = connection.createStatement();) {
+				String sql = "UPDATE orders SET status = 'Cancelled' WHERE id ='"+orderid+ "'";
+				stmt.executeUpdate(sql);
+				updateRecords();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
+		
+		collect.setOnAction(event -> {
+			try (Connection connection = Database.getConnection();
+					Statement stmt = connection.createStatement();) {
+				String sql = "UPDATE orders SET status = 'Collected' WHERE id ='"+orderid+ "'";
+				stmt.executeUpdate(sql);
+				updateRecords();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
+		
+		
+	
 
 		checkVip.setVisible(false);
 		welcome.setText("Welcome " + model.getCurrentUser().getFname() + " " + model.getCurrentUser().getLname() + " "
@@ -115,8 +179,7 @@ public class HomeController {
 					message.setTextFill(Color.RED);
 				}});	}
 
-		account.setOnAction(event -> {
-			MenuController.restaurant.Report();
+		account.setOnAction(event -> {		
 			try {
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UpdateUserView.fxml"));
 				// Customize controller instance
