@@ -1,4 +1,4 @@
-package p;
+package RestaurantStock;
 
 public  class Sodas extends FoodItem  {
 

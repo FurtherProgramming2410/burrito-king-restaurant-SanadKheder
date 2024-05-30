@@ -1,4 +1,4 @@
-package p;
+package RestaurantStock;
 
 abstract class FoodItem {
 	

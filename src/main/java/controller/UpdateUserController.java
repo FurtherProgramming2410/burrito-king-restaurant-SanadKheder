@@ -23,40 +23,12 @@ import model.Model;
 import model.User;
 
 public class UpdateUserController {
-
-	
-	
-	
 	@FXML
-	private Label message;
+	private Label message,fname,lname;
 	@FXML
-	private Button edit;
-	
+	private Button edit,save,close;
 	@FXML
-private TextField fname1;
-	@FXML
-	private TextField lname1;
-	@FXML
-	private TextField username;
-	@FXML
-private TextField email;
-	@FXML
-	private TextField vip;
-	@FXML
-	private TextField password;
-
-	
-	
-	
-	@FXML
-	private Label fname;
-	@FXML
-	private Label lname;
-	@FXML
-	private Button close;
-	@FXML
-	private Button save;
-
+	private TextField vip,password,email,username,lname1,fname1;
 	private Stage stage;
 	private Stage parentStage;
 	private Model model;
@@ -69,8 +41,7 @@ private TextField email;
 
 	@FXML
 	public void initialize() {
-	
-		
+// Get User details///////////////////////////// 		
 		fname.setText(model.getCurrentUser().getFname());
 		lname.setText(model.getCurrentUser().getLname());
 		fname1.setText(model.getCurrentUser().getFname());
@@ -80,10 +51,7 @@ private TextField email;
 		email.setText(model.getCurrentUser().getEmail());
 		vip.setText(model.getCurrentUser().getVip());
 		
-		
-		
-		
-		
+//Save button //////////////////////////////////////
 		save.setOnAction(event -> {
 			if (!fname1.getText().isEmpty() && !password.getText().isEmpty()&& !lname1.getText().isEmpty()) {
 			try (Connection connection = Database.getConnection();
@@ -97,6 +65,7 @@ private TextField email;
              	model.getCurrentUser().setFname(fname1.getText());
 				model.getCurrentUser().setLname(lname1.getText());
 				model.getCurrentUser().setPassword(password.getText());
+				////Hid buttion after save
 				fname1.setDisable(true);
 				lname1.setDisable(true);
 				password.setDisable(true);
@@ -104,45 +73,25 @@ private TextField email;
 				edit.setVisible(true);
 		} catch (SQLException e) {
 	         e.printStackTrace(); }}
-			 else {
-				 message.setText("Empty Firstname or LastName or password");			
-				}	
-		});	
-		
-		
-		
-		
+			 else {}});	
+			
+//Edit Button to Show button after save///////////////////////////////////
 		edit.setOnAction(event -> {
 		edit.setVisible(false);
 		fname1.setDisable(false);
 		lname1.setDisable(false);
 		password.setDisable(false);
-		save.setVisible(true);
-		});	
+		save.setVisible(true);});	
 		
-		
-		
-		
-		
+//close button//////////////////////////////
 		close.setOnAction(event -> {
 			stage.close();
-			parentStage.show();
-		});	
-		
-		
+			parentStage.show();});		
 	}
-	
-	
-	
 
-	
-	
-	
 	public void showStage(Pane root) {
 		Scene scene = new Scene(root, 500, 300);
 		stage.setScene(scene);
 		stage.setResizable(false);
-		stage.setTitle("Update");
-		stage.show();
-	}
-}
+		stage.setTitle("Update User");
+		stage.show();}}

@@ -7,6 +7,7 @@ public class User {
 	private String lname;
 	private String email;
 	private String vip="false";
+
 	public User() {
 	}
 	
@@ -24,9 +25,6 @@ public class User {
 		this.email = email;
 		this.vip = vip;
 	}
-
-
-
 
 
 

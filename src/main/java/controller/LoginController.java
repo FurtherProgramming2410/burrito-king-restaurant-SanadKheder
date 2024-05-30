@@ -22,20 +22,13 @@ import model.User;
 
 public class LoginController {
 	@FXML
-	private TextField name;
+	private TextField name,fname,lname;
 	@FXML
 	private PasswordField password;
 	@FXML
-	private TextField fname;
-	@FXML
-	private TextField lname;
-	@FXML
 	private Label message;
 	@FXML
-	private Button login;
-	@FXML
-	private Button signup;
-
+	private Button signup,login;
 	private Model model;
 	private Stage stage;
 	
@@ -45,9 +38,9 @@ public class LoginController {
 	}
 	
 	@FXML
-	public void initialize() {		
+	public void initialize() {	
+//////////////////////////////////////////////////////////////
 		login.setOnAction(event -> {
-		
 			if (!name.getText().isEmpty() && !password.getText().isEmpty()) {
 				User user;
 				try {
@@ -57,16 +50,13 @@ public class LoginController {
 						try {
 							FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/HomeView.fxml"));
 							HomeController homeController = new HomeController(stage, model);
-							
 							loader.setController(homeController);
 							HBox root = loader.load();
-	
 							homeController.showStage(root);
 							stage.close();
 						}catch (IOException e) {
 							message.setText(e.getMessage());
-						}
-						
+						}		
 					} else {
 						message.setText("Wrong username or password");
 						message.setTextFill(Color.RED);
@@ -75,46 +65,34 @@ public class LoginController {
 					message.setText(e.getMessage());
 					message.setTextFill(Color.RED);
 				}
-				
 			} else {
 				message.setText("Empty username or password");
 				message.setTextFill(Color.RED);
 			}
-	
 			name.clear();
-			password.clear();
-			
-			
+			password.clear();	
 		});
-		
+////////////////////////////////////////////////////////
 		signup.setOnAction(event -> {
 			try {
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/SignupView.fxml"));
-				
 				// Customize controller instance
 				SignupController signupController =  new SignupController(stage, model);
-
 				loader.setController(signupController);
 				VBox root = loader.load();
-				
 				signupController.showStage(root);
-				
 				message.setText("");
 				name.clear();
 				password.clear();
-				
-				
 				stage.close();
-			} catch (IOException e) {
-				message.setText(e.getMessage());
-			}});
+			} catch (IOException e) {message.setText(e.getMessage());}});
 	}
 	
 	public void showStage(Pane root) {
 		Scene scene = new Scene(root, 500, 300);
 		stage.setScene(scene);
 		stage.setResizable(false);
-		stage.setTitle("Welcome");
+		stage.setTitle("Login");
 		stage.show();
 	}
 }

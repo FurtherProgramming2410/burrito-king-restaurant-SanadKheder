@@ -61,8 +61,7 @@ public class SignupController {
 				} catch (SQLException e) {
 					status.setText(e.getMessage());
 					status.setTextFill(Color.RED);
-				}
-				
+				}	
 			} else {
 				status.setText("Empty username or password");
 				status.setTextFill(Color.RED);

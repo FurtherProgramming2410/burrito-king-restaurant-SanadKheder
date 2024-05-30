@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -51,11 +52,6 @@
                         <Button fx:id="menu" mnemonicParsing="false" prefHeight="37.0" prefWidth="63.0" style="-fx-background-color: orange;" text="Menu" textFill="WHITE" />
                      </children>
                   </VBox>
-                  <VBox prefHeight="178.0" prefWidth="109.0">
-                     <children>
-                        <Button fx:id="meals" mnemonicParsing="false" prefHeight="35.0" prefWidth="61.0" style="-fx-background-color: orange;" text="Meals" textFill="WHITE" />
-                     </children>
-                  </VBox>
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
                         <Button fx:id="account" mnemonicParsing="false" prefHeight="38.0" prefWidth="64.0" style="-fx-background-color: orange;" text="Account" textFill="WHITE" />
@@ -96,7 +92,7 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox prefHeight="154.0" prefWidth="392.0">
+            <VBox prefHeight="133.0" prefWidth="392.0">
                <children>
                   <Pane fx:id="checkVip" focusTraversable="true" prefHeight="1.0" prefWidth="426.0">
                      <children>
@@ -107,68 +103,121 @@
                         </Label>
                         <TextField fx:id="email" layoutX="20.0" layoutY="28.0" promptText="Email Address" />
                         <Button fx:id="apply" layoutX="183.0" layoutY="28.0" mnemonicParsing="false" style="-fx-background-color: orange;" text="Apply" textFill="#f2f2f2" />
-                        <Label fx:id="message" layoutX="240.0" layoutY="31.0" textFill="#ff002f">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font>
-                        </Label>
                      </children>
                   </Pane>
                </children></VBox>
-            <Pane prefHeight="211.0" prefWidth="392.0">
+            <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label layoutX="4.0" layoutY="6.0" text="Order records" textFill="#ff9d00">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <TableView fx:id="table_order" editable="true" layoutX="4.0" layoutY="28.0" onMouseClicked="#getSelected" prefHeight="112.0" prefWidth="384.0">
-                    <columns>
-                        <TableColumn fx:id="col_id" prefWidth="34.0" text="Id" />
-                      <TableColumn fx:id="col_date" prefWidth="63.0" text="Date" />
-                      <TableColumn fx:id="col_price" prefWidth="57.0" text="Price" />
-                        <TableColumn fx:id="col_status" minWidth="0.0" prefWidth="83.0" text="status" />
-                        <TableColumn fx:id="col_username" prefWidth="146.0" text="username" />
-                    </columns>
-                  </TableView>
-                  <Button fx:id="Refresh" alignment="CENTER" contentDisplay="TOP" defaultButton="true" graphicTextGap="5000.0" layoutX="314.0" layoutY="-6.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: orange;" text="Refresh" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" wrapText="true">
-                     <effect>
-                        <DropShadow>
-                           <color>
-                              <Color red="1.0" green="1.0" blue="1.0" />
-                           </color>
-                        </DropShadow>
-                     </effect>
-                     <cursor>
-                        <Cursor fx:constant="TEXT" />
-                     </cursor>
-                  </Button>
-                  <Button fx:id="cancel" alignment="CENTER" contentDisplay="TOP" defaultButton="true" graphicTextGap="5000.0" layoutX="243.0" layoutY="-6.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: orange;" text="Cancel" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" wrapText="true">
-                     <effect>
-                        <DropShadow>
-                           <color>
-                              <Color red="1.0" green="1.0" blue="1.0" />
-                           </color>
-                        </DropShadow>
-                     </effect>
-                     <cursor>
-                        <Cursor fx:constant="TEXT" />
-                     </cursor>
-                  </Button>
-                  <Button fx:id="collect" alignment="CENTER" contentDisplay="TOP" defaultButton="true" graphicTextGap="5000.0" layoutX="172.0" layoutY="-6.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: orange;" text="Collect" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" wrapText="true">
-                     <effect>
-                        <DropShadow>
-                           <color>
-                              <Color red="1.0" green="1.0" blue="1.0" />
-                           </color>
-                        </DropShadow>
-                     </effect>
-                     <cursor>
-                        <Cursor fx:constant="TEXT" />
-                     </cursor>
-                  </Button>
+                  <Pane prefHeight="196.0" prefWidth="392.0">
+                     <children>
+                        <Label layoutX="5.0" layoutY="26.0" text="Order records" textFill="#ff9d00">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <TableView fx:id="table_order" editable="true" layoutX="5.0" layoutY="48.0" onMouseClicked="#getSelected" prefHeight="112.0" prefWidth="384.0">
+                          <columns>
+                              <TableColumn fx:id="col_id" prefWidth="34.0" text="Id" />
+                            <TableColumn fx:id="col_date" prefWidth="63.0" text="Date" />
+                            <TableColumn fx:id="col_price" prefWidth="57.0" text="Price" />
+                              <TableColumn fx:id="col_status" minWidth="0.0" prefWidth="83.0" text="status" />
+                              <TableColumn fx:id="col_username" prefWidth="146.0" text="username" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="Refresh" alignment="CENTER" contentDisplay="TOP" defaultButton="true" graphicTextGap="5000.0" layoutX="315.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: orange;" text="Refresh" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" wrapText="true">
+                           <effect>
+                              <DropShadow>
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="cancel" alignment="CENTER" contentDisplay="TOP" defaultButton="true" graphicTextGap="5000.0" layoutX="244.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: orange;" text="Cancel" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" wrapText="true">
+                           <effect>
+                              <DropShadow>
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="collect" alignment="CENTER" contentDisplay="TOP" defaultButton="true" graphicTextGap="5000.0" layoutX="173.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: orange;" text="Collect" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" wrapText="true">
+                           <effect>
+                              <DropShadow>
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="export" alignment="CENTER" contentDisplay="TOP" defaultButton="true" graphicTextGap="5000.0" layoutX="101.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: orange;" text="Export" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" wrapText="true">
+                           <effect>
+                              <DropShadow>
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                           <cursor>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </Button>
+                        <Pane fx:id="export_Page" layoutX="4.0" layoutY="49.0" prefHeight="112.0" prefWidth="384.0" style="-fx-background-color: white;" visible="false">
+                           <children>
+                              <Button fx:id="save" alignment="CENTER" contentDisplay="TOP" defaultButton="true" graphicTextGap="5000.0" layoutX="227.0" layoutY="86.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: orange;" text="Save" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" wrapText="true">
+                                 <effect>
+                                    <DropShadow>
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                                 <cursor>
+                                    <Cursor fx:constant="TEXT" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="close" alignment="CENTER" contentDisplay="TOP" defaultButton="true" graphicTextGap="5000.0" layoutX="314.0" layoutY="86.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: orange;" text="Close" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" wrapText="true">
+                                 <effect>
+                                    <DropShadow>
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                                 <cursor>
+                                    <Cursor fx:constant="TEXT" />
+                                 </cursor>
+                              </Button>
+                              <TextField fx:id="name" layoutX="21.0" layoutY="31.0" promptText="Orders" text="Orders" />
+                              <TextField fx:id="path" layoutX="21.0" layoutY="74.0" promptText="Path" text="Export_Files\CSV\" />
+                              <Label layoutX="21.0" layoutY="6.0" text="Name:" textFill="#ff9c00" />
+                              <Label layoutX="21.0" layoutY="56.0" text="where you do want to save the file" textFill="#ff9c00" />
+                              <CheckBox fx:id="username_checkBox" layoutX="286.0" layoutY="7.0" mnemonicParsing="false" selected="true" text="Username" textFill="#ff9c00" />
+                              <CheckBox fx:id="id_checkBox" layoutX="286.0" layoutY="35.0" mnemonicParsing="false" selected="true" text="ID" textFill="#ffa100" />
+                              <CheckBox fx:id="price_checkBox" layoutX="211.0" layoutY="7.0" mnemonicParsing="false" selected="true" text="Price" textFill="#ff9c00" />
+                              <CheckBox fx:id="date_checkBox" layoutX="211.0" layoutY="35.0" mnemonicParsing="false" selected="true" text="Date" textFill="#ff9c00" />
+                              <CheckBox fx:id="status_checkBox" layoutX="212.0" layoutY="63.0" mnemonicParsing="false" selected="true" text="Status" textFill="#ff9c00" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
                </children>
-            </Pane>
+            </VBox>
+            <Label fx:id="message" prefHeight="19.0" prefWidth="226.0" textFill="#ff002f">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
             <Label fx:id="message1" />
          </children>
       </VBox>
