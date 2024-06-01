@@ -186,7 +186,10 @@ public class MenuController {
 //ok Button /////////////////////////////////////////////////////		
 			ok.setOnAction(event -> {
 				//check if user enter correct input then upadte price
-if (Double.parseDouble(Enter_credit.getText()) <= credit &&Double.parseDouble(Enter_credit.getText()) >=0 ){
+				if (Enter_credit.getText().isEmpty()) {
+					message.setText("Please enter any value ");
+				}
+				else if (Double.parseDouble(Enter_credit.getText()) <= credit &&Double.parseDouble(Enter_credit.getText()) >=0 ){
 	message.setText("Done! Credit add $"+Enter_credit.getText());
 	creditmessage.setVisible(false);
 	creditenter.setVisible(false);
