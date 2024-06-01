@@ -176,7 +176,6 @@ public class MenuController {
 						parentStage.show();}
 				else {message.setText("Please Fill all boxes");}});
 			
-			
 ///Yes Button /////////////////////////////////////////////		
 			yes.setOnAction(event -> {
 				creditmessage.setVisible(false);
