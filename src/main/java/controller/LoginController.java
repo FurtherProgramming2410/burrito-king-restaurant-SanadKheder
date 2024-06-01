@@ -87,6 +87,8 @@ public class LoginController {
 			} catch (IOException e) {message.setText(e.getMessage());}});
 	}
 	
+	
+	
 	public void showStage(Pane root) {
 		Scene scene = new Scene(root, 500, 300);
 		stage.setScene(scene);
