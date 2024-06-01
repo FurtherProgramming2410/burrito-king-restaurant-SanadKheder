@@ -3,7 +3,6 @@ import java.time.LocalDateTime;
 
 public class Order  {
 	private LocalDateTime myObj = LocalDateTime.now();
-	
 	private int id;
 	private String username,date,price, status;
 	public int getId() {
@@ -44,8 +43,4 @@ public class Order  {
 		this.price = price;
 		this.status = status;
 	}
-	
-	
-	
-	
 }

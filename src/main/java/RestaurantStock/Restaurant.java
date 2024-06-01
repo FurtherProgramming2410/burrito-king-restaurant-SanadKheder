@@ -21,9 +21,6 @@ public class Restaurant {
 	private static Burrito item1 = new Burrito("Burrito", 7.00);
 	private static Fries item2 = new Fries(9, "Fries", 4.00);
 	private static Sodas item3 = new Sodas(99, "Sodas", 2.50);
-
-	
-	
 //Calculator Price////////// ////////////////////////////
 	public static double CalculatorPrice(double fqty, double bqty, double sqty, double meal,double discount) {	
 		total = (fqty * getItem2().getPrice()) + (bqty * getItem1().getPrice()) + (sqty * getItem3().getPrice())
