@@ -39,6 +39,8 @@ public class UpdateUserController {
 		this.model = model;
 	}
 
+	
+	
 	@FXML
 	public void initialize() {
 // Get User details///////////////////////////// 		
