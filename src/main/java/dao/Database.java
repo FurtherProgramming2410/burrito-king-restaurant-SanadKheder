@@ -25,7 +25,6 @@ public class Database {
     public static Connection getConnection() throws SQLException {
         // DriverManager is the basic service for managing a set of JDBC drivers
         return DriverManager.getConnection(DB_URL);}
-
     
    //// Get data from database for orders///////////////// 
     public static ObservableList<Order> getDataOrders() throws SQLException {
