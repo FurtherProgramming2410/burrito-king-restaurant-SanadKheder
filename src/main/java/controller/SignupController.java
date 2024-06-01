@@ -73,7 +73,6 @@ public class SignupController {
 			parentStage.show();
 		});
 	}
-	
 	public void showStage(Pane root) {
 		Scene scene = new Scene(root, 500, 300);
 		stage.setScene(scene);

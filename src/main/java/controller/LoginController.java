@@ -36,7 +36,6 @@ public class LoginController {
 		this.stage = stage;
 		this.model = model;
 	}
-	
 	@FXML
 	public void initialize() {	
 //////////////////////////////////////////////////////////////
@@ -96,4 +95,3 @@ public class LoginController {
 		stage.show();
 	}
 }
-
