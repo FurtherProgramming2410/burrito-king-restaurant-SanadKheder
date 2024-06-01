@@ -68,6 +68,8 @@ public class SignupController {
 			}
 		});
 
+		
+		
 		close.setOnAction(event -> {
 			stage.close();
 			parentStage.show();
